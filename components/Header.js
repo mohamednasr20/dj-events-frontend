@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import styles from '../styles/header.module.css';
 
 export default function Header() {
   return (
-    <Header className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.logo}>
         <Link href="/">
           <a>DJ Events</a>
@@ -17,6 +18,6 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-    </Header>
+    </header>
   );
 }
