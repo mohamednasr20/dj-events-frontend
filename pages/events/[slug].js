@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
+import { API_URL } from '@/config/index';
 
 export default function EventPage() {
   const router = useRouter();
@@ -10,4 +11,15 @@ export default function EventPage() {
       <button onClick={() => router.push('/')}>Click</button>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ query: { slug } }) {
+  const res = await fetch(`${API_URL}/events?slug=${slug}`);
+  const events = await res.json();
+
+  return {
+    props: {
+      evt: events[0],
+    },
+  };
 }
